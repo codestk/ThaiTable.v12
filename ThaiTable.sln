@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThaiTable", "ThaiTable\ThaiTable.csproj", "{B4F528B7-F821-461C-B2A3-1E60B087E6B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldPayDotNet", "WorldPayDotNet.DLL Source\WorldPayDotNet.csproj", "{FF453589-E88C-45E1-8C84-5E1FE5EB20BD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldPayCSharpRedirect", "C# Example Code\WorldPayCSharpRedirect.csproj", "{CE2685A3-E596-44E4-A6AE-B3063E7AD4FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{FF453589-E88C-45E1-8C84-5E1FE5EB20BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF453589-E88C-45E1-8C84-5E1FE5EB20BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF453589-E88C-45E1-8C84-5E1FE5EB20BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE2685A3-E596-44E4-A6AE-B3063E7AD4FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE2685A3-E596-44E4-A6AE-B3063E7AD4FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE2685A3-E596-44E4-A6AE-B3063E7AD4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE2685A3-E596-44E4-A6AE-B3063E7AD4FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
