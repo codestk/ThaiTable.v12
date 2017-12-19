@@ -1,0 +1,26 @@
+﻿@model ThaiTable.Models.WorldpayViewModel
+
+<form id='paypalForm' action='https://select.worldpay.com/wcc/purchase' method='post'>
+<input type='hidden' name='instId' value='1018224' />
+<input type='hidden' name='cartId' value='@Model.OrderID' />
+<input type='hidden' name='amount' value='@Model.Total' />
+<input type='hidden' name='currency' value='GBP' />
+<input type='hidden' name='desc' value='@Model.Description' />
+<input type='hidden' name='testMode' value='100' />
+<input type='hidden' name='MC_callback' value='http://103.10.228.63/ThaiTable/Payment/WorldPayCallback'>
+<input type='hidden' name='name' value='@Model.CustomerName' />
+<input type='hidden' name='address' value='@Model.Address' />
+<input type='hidden' name='postcode' value='@Model.PostCode' />
+</form>
+
+@*For example, in your HTML order details submission form you should change lines like this:
+<form action="https://secure-test.worldpay.com/wcc/purchase" method=POST>
+    to:
+    <form action="https://secure.worldpay.com/wcc/purchase" method=POST>
+        That is, you should change secure-test to secure.
+        You should also remove testMode parameters, such as:
+        <input type="hidden" name="testMode" value="100">
+        Alternatively, you can specify live mode by setting them to 0 (zero):
+        <input type="hidden" name="testMode" value="0">
+        Please also remember to remove any test result instructions from the shopper's name parameter, as shown below:
+        <input type="hidden" name="name" value="AUTHORISED">*@

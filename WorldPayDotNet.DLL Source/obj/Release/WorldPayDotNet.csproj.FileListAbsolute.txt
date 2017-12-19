@@ -1,0 +1,15 @@
+F:\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\bin\Release\WorldPayDotNet.dll
+F:\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\bin\Release\WorldPayDotNet.pdb
+F:\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\obj\Release\WorldPayDotNet.dll
+F:\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\obj\Release\WorldPayDotNet.pdb
+F:\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\obj\Release\WorldPayDotNet.csprojResolveAssemblyReference.cache
+D:\PHETPHONG-NB\F\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\bin\Release\WorldPayDotNet.dll
+D:\PHETPHONG-NB\F\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\bin\Release\WorldPayDotNet.pdb
+D:\PHETPHONG-NB\F\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\obj\Release\WorldPayDotNet.csprojResolveAssemblyReference.cache
+D:\PHETPHONG-NB\F\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\obj\Release\WorldPayDotNet.dll
+D:\PHETPHONG-NB\F\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\obj\Release\WorldPayDotNet.pdb
+D:\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\bin\Release\WorldPayDotNet.dll
+D:\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\bin\Release\WorldPayDotNet.pdb
+D:\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\obj\Release\WorldPayDotNet.dll
+D:\Projects\dotNet\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\obj\Release\WorldPayDotNet.pdb
+D:\Projects\dotNET\ThaiTable\ThaiTable\WorldPayDotNet.DLL Source\obj\Release\WorldPayDotNet.csprojResolveAssemblyReference.cache

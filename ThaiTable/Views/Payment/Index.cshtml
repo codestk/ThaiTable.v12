@@ -1,0 +1,125 @@
+﻿@{
+    //ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";    
+}
+
+<div id="body-container">
+    @if (Session["orderType"].ToString() == "01")
+    {
+        Html.RenderPartial("_ForCollection", (ThaiTable.Models.CollectionViewModel)ViewBag.Collection);
+    }
+    else if (Session["orderType"].ToString() == "02")
+    {
+        Html.RenderPartial("_ForDelivery", (ThaiTable.Models.DeliveryViewModel)ViewBag.Delivery);
+    }
+    @*@Html.Partial("_WaitingList")*@
+
+    @*@if (ViewBag.WorldpayModel != null)
+    {
+        Html.RenderPartial("_Worldpay", (ThaiTable.Models.WorldpayViewModel)ViewBag.WorldpayModel);
+    }*@
+</div>
+
+        @section scripts{
+            <script type="text/javascript">
+                $(function () {
+
+                    var time = $("#options option:selected").text();
+                   // alert(time);
+                    if (time == "")
+                        $('#payment-btn').attr('disabled', 'disabled');
+                    //loadCategories();
+                    //loadCart();
+
+                    $("#nav ul li a").click(function () {
+
+                        $('#nav ul li a').each(function () {
+                            $(this).removeClass('selected');
+                        });
+
+                        $(this).addClass('selected');
+
+                        console.log($(this).attr('id'));
+
+                        //return false;
+                    });
+
+                    $('#paypalForm').submit();
+                    //$('#form1').submit(function () {
+                    //    payment();
+                    //    //return false;
+                    //});
+
+                });
+
+                @*function loadCategories() {
+                    $.ajax({
+                        url: '@Url.Action("CategoryLayout", "Home")',
+                        cache: false,
+                        type: "GET",
+                        success: function (response, status, xhr) {
+                            $("#nav").html(response);
+                        }
+                    });
+                    return false;
+                }*@
+
+                $("#options").change(function () {
+                    $('#payment-btn').removeAttr('disabled');
+                    var time = $("#options option:selected").text();
+                    //alert(time);
+                    $.ajax({
+                        url: '@Url.Action("DeliveryTime", "Payment")' + '?time=' + time,
+                        cache: false,
+                        type: "POST",
+                        success: function (response, status, xhr) {
+                        }
+                    });
+                });
+
+
+
+                function loadCart() {
+                    $.ajax({
+                        url: '@Url.Action("ShoppingCartPartial", "ShoppingCart")',
+                        cache: false,
+                        type: "GET",
+                        success: function (response, status, xhr) {
+                            $("#cart-container").html(response);
+                        }
+                    });
+                }
+
+                function removeFood(foodId) {
+
+                    $.ajax({
+                        url: '@Url.Action("RemoveItem", "ShoppingCart")' + '?foodId=' + foodId,
+                        cache: false,
+                        type: "GET",
+                        success: function (response, status, xhr) {
+                            loadCart();
+                        }
+                    });
+                }
+
+                function payment() {
+                    alert('payment');
+                    $.ajax({
+                        url: "@Url.Content("~/Payment/Index")",
+                        data: $("#form1").serialize(),
+                        type: "POST",
+                        success: function (data) {
+                            //alert(data);
+                            $("#payment").html(data);
+                            $("#paypalForm").submit();   //assuming id of second form  is form2
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+                    });
+                    return false;   //to prevent submit
+                }
+
+            </script>
+        }
+

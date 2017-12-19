@@ -1,0 +1,119 @@
+﻿@model List<ThaiTable.Models.FoodViewModel>
+
+
+<table id="table-food">
+    <thead>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
+        {
+            item.Data.Quantity = 1;
+            @*@Html.Partial("_FoodItem", @item)*@
+
+            <tr>
+                <td><h3> @item.Data.FoodName</h3></td>
+                <td align="right">@item.Data.Price.ToString("n2")</td>
+            </tr>
+            <tr class="spaceUnder">
+                <td>
+                    @item.Data.Description
+                </td>
+                <td align="right">
+                    @if (item.Data.Modifiers.Count() > 0)
+                    {
+                        <a class="btn btn-default" data-stackbox-backdrop="true" data-stackbox-width="auto" data-stackbox="true" data-stackbox-position="top"
+                           data-stackbox-anim-open="fadeIn fast" data-stackbox-anim-close="fadeOut fast"
+                           href="#foods@(item.Data.FoodId)"><img src="../Content/images/add.png" /></a>
+                    }
+                    else
+                    {
+                        if (item.Data.FoodId == "0019" || item.Data.FoodId == "0094" || item.Data.FoodId == "0095" || item.Data.FoodId == "0096")
+                        {
+                            <a class="btn btn-default" data-stackbox-backdrop="true" data-stackbox-width="auto" data-stackbox="true" data-stackbox-position="top"
+                               data-stackbox-anim-open="fadeIn fast" data-stackbox-anim-close="fadeOut fast"
+                               href="#foods@(item.Data.FoodId)"><img src="../Content/images/add.png" /></a>
+                        }
+                        else
+                        {
+                            <a href="#" onclick="addFood('@item.Data.FoodId',1); return false;"><img src="../Content/images/add.png" /></a>                        
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
+{
+    //if (item.Data.Modifiers.Count == 0)
+    //{
+    //    continue;
+    //}
+    if (item.Data.FoodId == "0019" || item.Data.FoodId == "0094" || item.Data.FoodId == "0095" || item.Data.FoodId == "0096"
+        || item.Data.Modifiers.Count > 0)
+    {
+
+    
+        <div id="foods@(item.Data.FoodId)" class="demo">
+            <h4>Please select</h4>
+            <table id="sub-table">
+                <tbody>
+                    @if (item.Data.FoodId == "0019")
+                    {
+                        item.Data.Quantity = 2;
+
+                        <tr>
+                            <td><span class="desc">@item.Data.FoodName</span></td>
+                            <td>@Html.Partial("_LowLimit", item.Data)</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    }
+                    @if (item.Data.FoodId == "0094" || item.Data.FoodId == "0095" || item.Data.FoodId == "0096")
+                    {
+                        item.Data.Quantity = 4;
+                        <tr>
+                            <td><span class="desc">@item.Data.FoodName</span></td>
+                            <td>@Html.Partial("_LowLimit", item.Data)</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var modefier in item.Data.Modifiers)
+                        {
+                            <tr>
+                                <td>@modefier.ModifierName</td>
+                                <td>+@modefier.Price.ToString("n2")</td>
+                                <td><input type="radio" name="modifier@(item.Data.FoodId)" id="radio@(item.Data.FoodId+modefier.ModifierId)" value="@modefier.ModifierId" class="css-checkbox" /><label for="radio@(item.Data.FoodId+ modefier.ModifierId)" class="css-label radGroup1">&nbsp;</label></td>
+                            </tr>
+
+                            //              alert($("input:radio[name='r']:checked").val()+ ' '+
+                            //$("input:radio[name='s']:checked").val());
+                            @*<tr>
+                                    <td class="sub">Large +2.70</td>
+                                    <td><input type="radio" name="radiog_lite" id="radio2" class="css-checkbox" /><label for="radio2" class="css-label radGroup1">&nbsp;</label></td>
+                                </tr>*@
+                        }
+                    }
+
+
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right" class="button-done">
+                            <button class="button green" data-close-stackbox="true" onclick="addFood('@item.Data.FoodId', @item.Data.Quantity); return false;">DONE</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+}
+

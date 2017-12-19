@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+}
+
+
+    <div class="container">
+        <div id="body-container">
+            @Html.Action("FoodList", "Home", new {categoryId= ViewBag.CategoryId })
+        </div>
+    </div>
+
+@section scripts{
+    <script type="text/javascript">
+    $(function () {
+
+        //loadCategories();
+        //loadFoods();
+        //loadCart();
+        //$('#paypalForm').submit();
+        @*$("#nav").load("@Url.Content("~/Home/CategoryLayout")", function (response, status, xhr) {
+                $("#nav").html(response);
+            });*@
+
+            $("#nav ul li a").click(function () {
+
+                $('#nav ul li a').each(function () {
+                    $(this).removeClass('selected');
+                });
+
+                $(this).addClass('selected');
+
+                console.log($(this).attr('id'));
+
+                //return false;
+            });
+    });
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+        @*function loadCategories() {
+            $.ajax({
+                url: '@Url.Action("CategoryLayout", "Home")',
+                cache: false,
+                type: "GET",
+                success: function (response, status, xhr) {
+                    $("#nav").html(response);
+                }
+            });
+
+            return false;
+        }*@
+
+    @*function loadFoods(categoryId) {
+            $.ajax({
+                url: '@Url.Action("FoodList", "Home")' + '?categoryId=' + categoryId,
+                cache: false,
+                type: "GET",
+                success: function (response, status, xhr) {
+                    $("#body-container").html(response);
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+        }*@
+
+    function loadCart() {
+        $.ajax({
+            url: '@Url.Action("ShoppingCartPartial", "ShoppingCart")',
+            cache: false,
+            type: "GET",
+            success: function (response, status, xhr) {
+                $("#cart-container").html(response);
+            }
+        });
+    }
+
+        function addFood(foodId, quantity) {
+            if (quantity > 1) {
+                quantity = $("#"+foodId+"_Data").val()
+            }
+            if (foodId == "0019") {
+                if (quantity < 2 || quantity > 10)
+                    return;
+            }else if (foodId == "0094" || foodId == "0095" || foodId == "0096")
+            {
+                if (quantity < 4 || quantity > 10)
+                    return;
+            }
+                
+
+            var modifier = $('input:radio[name=modifier' + foodId + ']:checked').val();
+
+        if (String(modifier) === 'undefined') {
+            if ($('#foods' + foodId).length > 0)
+                if (foodId != "0019" && foodId != "0094" && foodId != "0095" && foodId != "0096")
+                return;
+
+            modifier = "";
+        } else {
+            $("input:radio").removeAttr("checked");
+
+        }
+
+        $.ajax({
+            url: '@Url.Action("AddItem", "ShoppingCart")' + '?foodId=' + foodId + '&quantity=' + quantity + '&modifierId=' + modifier,
+            cache: false,
+            type: "GET",
+            success: function (response, status, xhr) {
+                loadCart();
+            },
+            error: function (request, status, error) {
+                //alert(request.responseText);
+            }
+        });
+    }
+
+    function removeFood(foodId, modifierId) {
+
+        $.ajax({
+            url: '@Url.Action("RemoveItem", "ShoppingCart")' + '?foodId=' + foodId + '&res=' + modifierId,
+            cache: false,
+            type: "GET",
+            success: function (response, status, xhr) {
+                loadCart();
+            }
+        });
+    }
+
+
+    @*$("#food-container").load("@Url.Content("~/Home/FoodList/")", function (response, status, xhr) {
+        $("#food-container").html(response);
+    });*@
+    </script>
+}
+
+

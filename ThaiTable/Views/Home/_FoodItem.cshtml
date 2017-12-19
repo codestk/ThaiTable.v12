@@ -1,0 +1,46 @@
+﻿@model SuwannaMvc.Models.Food
+
+<tr>
+    <td><h3> @Model.FoodName </h3></td>
+    <td>£@Model.Price</td>
+</tr>
+<tr class="spaceUnder">
+    <td>
+        @Model.Description
+    </td>
+    <td>
+        <a class="btn btn-default" data-stackbox-backdrop="true" data-stackbox-width="auto" data-stackbox="true" data-stackbox-position="bottom" 
+           data-stackbox-anim-open="fadeIn fast" data-stackbox-anim-close="fadeOut fast" href="#modal-content"><img src="../Content/images/add.png" /></a>
+    </td>
+</tr>
+
+
+@*<div class="col-md-3">
+    <div class="content_box">
+
+        <div class="view view-fifth">
+            <a href="@Url.Action("Detail", "Product", new {productId=@Model.FoodID})">
+                <img src="@Url.Content("~/Content/images/"+@Model.ImageName)" class="img-responsive" alt="" />
+            </a>
+            <div class="content_box-grid">
+                <p class="m_1">@Model.FoodName</p>
+                <div class="price">
+                    Price:
+                    <span class="actual">£@Model.Price</span>
+                </div>
+                <ul class="product_but">
+                    <a href="#top">
+                        <li class="but3" onclick="addToShoppingCart('@Model.FoodID', 1)">
+                            Buy
+                        </li>
+                    </a>
+                    <div class="clearfix"> </div>
+                </ul>
+                <div class="mask">
+                    <div class="info">Quick View</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>*@

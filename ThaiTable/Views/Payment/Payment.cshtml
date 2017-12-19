@@ -1,0 +1,162 @@
+@model ThaiTable.Models.PaymentModel
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Payment</title>
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form action=@Url.Content("~/Payment/Payment") method='post' id='form1'>
+        <div style="width:800px;margin:auto">
+            <div class="ContentRight">
+                <div class="ContentHeader">
+                        Order Details
+                    </div>
+                    <div class="FormItem">
+                        <div class="FormLabel">Amount:</div>
+                        <div class="FormInputTextOnly">@Html.ValueFor(model => model.Worldpay.Total) GBP</div>
+                        @*<asp:hiddenfield id="hfCurrencyISOCode" value="826" />*@
+                    </div>
+                    <div class="FormItem">
+                        <div class="FormLabel">Order Description:</div>
+                        <div class="FormInputTextOnly">@Html.ValueFor(Model => Model.Worldpay.Description)</div>
+                        @Html.HiddenFor(model=> model.Worldpay.OrderID)
+                        @Html.HiddenFor(model => model.Worldpay.Description)
+                        @Html.HiddenFor(model => model.Worldpay.Total)
+                        @*<asp:hiddenfield id="hfOrderID" value="Order-1234" />
+                        <asp:hiddenfield id="hfOrderDescription" value="A Test Order" />*@
+                    </div>
+                <div class="ContentRight">
+                    <div class="ContentHeader">
+                        Card Details
+                    </div>
+                </div>
+                <div class="FormItem">
+                    <div class="FormLabel">Name On Card:</div>
+                    <div class="FormInput">
+                        @Html.TextBoxFor(model => model.Card.CardName, new { @class = "input-width", required = "required" })
+                        @*<asp:textbox id="tbCardName" cssclass="InputTextField" maxlength="50" />*@
+                    </div>
+                </div>
+                <div class="FormItem">
+                    <div class="FormLabel">Card Number:</div>
+                    <div class="FormInput">
+                        @Html.TextBoxFor(model => model.Card.CarNumber, new { @class = "input-width", required = "required" })
+                        @*<asp:textbox id="tbCardNumber" cssclass="InputTextField" maxlength="20" />*@
+                    </div>
+                </div>
+                <div class="FormItem">
+                    <div class="FormLabel">
+                        Expiry Date:
+                    </div>
+                    <div class="FormInput">
+                        @Html.DropDownListFor(model => model.Card.ExpireMonth, ViewBag.Months as IEnumerable<SelectListItem>, "", new { @class = "input-width", required = "required" })
+
+                        @*<asp:dropdownlist id="ddExpiryDateMonth" width="45px">
+                        </asp:dropdownlist>*@
+                        /
+                        @Html.DropDownListFor(model => model.Card.ExpireYear, ViewBag.Years as IEnumerable<SelectListItem>, "", new { @class = "input-width", required = "required" })
+
+                        @*<asp:dropdownlist id="ddExpiryDateYear" width="55px">
+                        </asp:dropdownlist>*@
+                    </div>
+                </div>
+                @*<div class="FormItem">
+                        <div class="FormLabel">
+                            Start Date:
+                        </div>
+                        <div class="FormInput">
+                            <asp:dropdownlist id="ddStartDateMonth" width="45px">
+                            </asp:dropdownlist>
+                            /
+                            <asp:dropdownlist id="ddStartDateYear" width="55px">
+                            </asp:dropdownlist>
+                        </div>
+                    </div>*@
+                @*<div class="FormItem">
+                        <div class="FormLabel">Issue Number:</div>
+                        <div class="FormInput">
+                            <asp:textbox id="tbIssueNumber" cssclass="InputTextField" maxlength="2" width="50px" />
+                        </div>
+                    </div>*@
+                <div class="FormItem">
+                    <div class="FormLabel">CV2:</div>
+                    <div class="FormInput">
+                        @Html.TextBoxFor(model => model.Card.Cv2, new { @class = "input-width", required = "required" })
+                        @*<asp:textbox id="tbCV2" cssclass="InputTextField" maxlength="4" width="50px" />*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="ContentRight">
+                <div class="ContentHeader">
+                    Customer Details
+                </div>
+                <div class="FormItem">
+                    <div class="FormLabel">Address:</div>
+                    <div class="FormInput">
+                        @Html.TextBoxFor(model => model.Customer.Address, new { @class = "input-width" })
+                        @*<asp:textbox id="tbAddress1" cssclass="InputTextField" maxlength="100" />*@
+                    </div>
+                </div>
+                @*<div class="FormItem">
+                        <div class="FormLabel">&nbsp</div>
+                        <div class="FormInput">
+                            <asp:textbox id="tbAddress2" cssclass="InputTextField" maxlength="50" />
+                        </div>
+                    </div>
+                    <div class="FormItem">
+                        <div class="FormLabel">&nbsp</div>
+                        <div class="FormInput">
+                            <asp:textbox id="tbAddress3" cssclass="InputTextField" maxlength="50" />
+                        </div>
+                    </div>
+                    <div class="FormItem">
+                        <div class="FormLabel">&nbsp</div>
+                        <div class="FormInput">
+                            <asp:textbox id="tbAddress4" cssclass="InputTextField" maxlength="50" />
+                        </div>
+                    </div>*@
+                <div class="FormItem">
+                    <div class="FormLabel">City:</div>
+                    <div class="FormInput">
+                        @Html.TextBoxFor(model => model.Customer.City, new { @class = "input-width" })
+                        @*<asp:textbox id="tbCity" cssclass="InputTextField" maxlength="50" />*@
+                    </div>
+                </div>
+                <div class="FormItem">
+                    <div class="FormLabel">State:</div>
+                    <div class="FormInput">
+                        @Html.TextBoxFor(model => model.Customer.State, new { @class = "input-width" })
+                        @*<asp:textbox id="tbState" cssclass="InputTextField" maxlength="50" />*@
+                    </div>
+                </div>
+                <div class="FormItem">
+                    <div class="FormLabel">Post Code:</div>
+                    <div class="FormInput">
+                        @Html.TextBoxFor(model => model.Customer.PostCode, new { @class = "input-width" })
+                        @*<asp:textbox id="tbPostCode" cssclass="InputTextField" maxlength="50" />*@
+                    </div>
+                </div>
+                <div class="FormItem">
+                    <div class="FormLabel">
+                        Country:
+                    </div>
+                    <div class="FormInput">
+                        @Html.DropDownListFor(model => model.Customer.Country, ViewBag.Countries as IEnumerable<SelectListItem>, "", new { @class = "input-width" })
+                        @*<asp:dropdownlist id="ddCountries" width="200px">
+                            <asp:listitem></asp:listitem>
+                        </asp:dropdownlist>*@
+                    </div>
+                </div>
+                <div class="FormItem">
+                    <div class="FormSubmit">
+                        <input id="Submit" type="submit" value="Submit For Processing" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

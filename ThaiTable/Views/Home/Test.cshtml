@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="Absolute-Center">
+
+    <table>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center" valign="bottom"><a href="@Url.Action("Welcome", "Home", new { orderType="01" })"><img class="btn" style="opacity: 1;" src=@Url.Content("~/Content/images/collection.png") /></a></td>
+            <td align="center" valign="bottom"><a href="@Url.Action("Welcome", "Home", new { orderType = "02" })"><img class="btn" src=@Url.Content("~/Content/images/delivery.png") /></a></td>
+        </tr>
+        <tr>
+            @*<td colspan="2" align="center"><img id="desc" src=@Url.Content("~/Content/images/desc.png") /></td>*@
+            <td colspan="2" align="center"><span class="subContent">We only accept card payment for online orders, please call us if you would like to pay by cash</span></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><span class="subContent">**We deliver to RG4 5-9, RG1 1-8, RG30 4 and RG30 6</span></td>
+        </tr>
+    </table>
+</div>
+
+@section footer{
+    <div id="footer">
+        <div class="float-right content">
+            <a href="@Url.Action("TermsAndConditions", "Home")">Terms &amp; Conditions</a>
+            <a href="@Url.Action("PrivacyPolicy", "Home")">Privacy Policy</a>
+        </div>
+    </div>
+
+}

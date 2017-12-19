@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ThaiTable</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="page-wrap">
+        <header>
+            @*<div class="head">*@
+                <div class="image-left">@*<img src=@Url.Content("~/Content/images/image-left.png") alt="" />*@</div>
+                <div class="image-right">
+                    @*<img src=@Url.Content("~/Content/images/image-right.png") alt="" />*@
+                    <div style="font-size: 12px; color: #000000; text-align: right; font-weight: bold;">
+                        8 Church Road<br />
+                        Caversham<br />
+                        RG4 7AD<br />
+                        0118 947 1500<br />
+                        0744 250 2662
+                    </div>
+                </div>
+
+                <div id="header">
+                    <a class="logo" href="@Url.Action("Index", "Home")"><img src=@Url.Content("~/Content/images/logo.jpg") alt="" /></a>
+                    <div style="position:relative; left:260px; bottom:10px; color:#000000;">Authentic Thai Restaurant</div>
+                </div>
+
+                @*<div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">
+                        @Html.ActionLink("Code Express",
+                        "Index", "Home")
+                    </p>
+                </div>
+                <div class="float-right">
+                    <nav>
+                        <ul id="menu">
+                            <li>
+                                @Html.ActionLink("Home",
+                            "Index", "Home")
+                            </li>
+                            <li>
+                                @Html.ActionLink("About",
+                            "About", "Home")
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>*@
+            @*</div>*@
+        </header>
+
+        @*<div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>*@
+        <div id="body-wrap">
+            <div id="center">
+                @RenderBody()
+            </div>
+        </div>
+
+        @RenderSection("footer", required: false)
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

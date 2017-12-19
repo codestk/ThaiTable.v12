@@ -1,0 +1,45 @@
+﻿@model ThaiTable.Models.CollectionViewModel
+
+<div id="payment">
+    <form action=@Url.Content("~/Payment/Collection") method='post' id='form1'>
+        <div id="collection" class="container">
+            <h4>YOUR DETAILS FOR COLLECTION</h4>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>FIRST NAME
+                            <span style="color:red">*</span>
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(Model => Model.FirstName, new { @class = "input-width", required = "required" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SURNAME
+                            <span style="color:red">*</span>
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(Model => Model.LastName, new { required = "required", @class = "input-width" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>CONTACT NUMBER
+                            <span style="color:red">*</span>
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(Model => Model.ContactNo, new { required = "required", @class = "input-width" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>COLLECTION TIME <span style="color:red">*</span></td>
+                        <td>@Html.Action("DeliveryTimePartial", "Payment")</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <br />
+            <span><span style="color:red">*</span>&nbsp;Mandatory fields</span>
+        </div>
+
+    </form>
+</div>

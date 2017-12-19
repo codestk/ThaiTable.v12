@@ -1,0 +1,80 @@
+﻿@model ThaiTable.Models.ShoppingCart
+
+<div id="cart" class="container">
+    <h3>YOUR ORDER</h3>
+
+    <div id="cart-content">
+        <table>
+            <thead>
+                <tr>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td class="first-col"><span class="cart-desc">@item.Quantity x @item.Description @item.ResName</span></td>
+                        <td class="second-col" align="right">@item.TotalPrice.ToString("n2")</td>
+                        <td class="thirth-col"><a href="#" onclick="removeFood('@item.ProductId', '@item.ResId')"><img src=@Url.Content("~/Content/images/remove.png") /></a></td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+    <div id="cart-footer">
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="2"><hr /></td>
+                </tr>
+                <tr>
+                    <td class="first-col">DELIVERY FEE</td>
+                    <td class="second-col" align="right">@Model.GetShippingFee().ToString("n2")</td>
+                    <td class="thirth-col">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>TOTAL</td>
+                    <td align="right">@Model.GetGrandTotal().ToString("n2")</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    @*function submitTwoForms() {
+        $.ajax({
+            //            url: "@Url.Content("~/Paypal/Shipping")",
+            url: "@Url.Content("~/WorldPay/Shipping")",
+            data: $("#form1").serialize(),
+            type: "POST",
+            success: function (data) {
+                //alert(data);
+                $("#paypalContainer").html(data);
+                $("#paypalForm").submit();   //assuming id of second form  is form2
+            },
+            error: function (request, status, error) {
+                alert(request.responseText);
+            }
+        });
+        return false;   //to prevent submit
+    }*@
+
+    $(function () {
+        $('#form1').submit(function () {
+            submitTwoForms();
+            return false;
+        });
+    })
+
+</script>

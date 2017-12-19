@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@model ThaiTable.Models.ResultModel
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="refresh" content="15;url=http://localhost/OrderUAT">
+    <title>Message</title>
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    @if (Model.IsError) { 
+    <div class="ErrorMessage">
+        @Html.Raw(Server.HtmlDecode(Model.Message))
+        @*<asp:Label ID="lbMessageLabel" runat="server" />*@
+    </div>
+    }
+    else {
+
+            <div id="pnTransactionResultsPanel" class="@Model.CssClass">
+
+                    <div class="TransactionResultsItem">
+                        <div class="TransactionResultsLabel">Payment Processor Response:</div>
+                        <div class="TransactionResultsText">
+                            @Html.ValueFor(model => model.Message)
+                            @*<asp:Label ID="lbGatewayResponse" runat="server" />*@
+                        </div>
+                    </div>
+
+
+                    @if (Model.IsDupplicate) {
+                    <div id="pnDuplicateTransactionPanel" class="">
+                        <div style="color:#000;margin-top:10px">
+                            A duplicate transaction means that a transaction with these details
+                            has already been processed by the payment provider. The details of
+                            the original transaction are given below
+                        </div>
+                        <div class="TransactionResultsItem" style="margin-top:10px">
+                            <div class="TransactionResultsLabel">Previous Transaction Response:</div>
+                            <div class="TransactionResultsText">
+                                @Html.ValueFor(model => model.Message)
+                                @*<asp:Label ID="lbPreviousTransactionMessage" runat="server" />*@
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    <div style="margin-top:10px">
+                        @*<asp:HyperLink ID="hlProcessAnother" runat="server">Process Another</asp:HyperLink>*@
+                    </div>
+                </div>
+    }
+</body>
+</html>

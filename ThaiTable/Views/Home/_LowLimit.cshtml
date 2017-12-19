@@ -1,0 +1,11 @@
+﻿@model ThaiTable.Models.FoodViewModel
+
+@if (Model.FoodId == "0019")
+{ 
+@Html.TextBoxFor(model => model.Quantity, "2", new { Name = Model.FoodId + "_Data", id = Model.FoodId + "_Data", @type = "number", @min = "2", @max = "10", @class = "qtyinput", required = "true" })
+}
+else
+{
+@Html.TextBoxFor(model => model.Quantity, "4", new { Name = Model.FoodId + "_Data", id = Model.FoodId + "_Data", @type = "number", @min = "4", @max = "10", @class = "qtyinput", required = "true" })
+
+}

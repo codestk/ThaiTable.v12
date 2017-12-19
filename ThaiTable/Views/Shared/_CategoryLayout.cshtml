@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ThaiTable.Models.Category>
+
+@*<div class="content_box">
+    <a href="index.html"><img src="@Url.Content("~/Content/images/suwanna.png")" alt="" /><br></a>
+</div>*@
+@*<div class="category_box">
+
+    <h3 class="cate_head">Categories</h3>*@
+    <ul class="category">
+        @{
+            if (Model != null)
+            {
+                foreach (var item in Model)
+                {                   
+                    @*<li id="@item.CategoryID"><a href="#" onclick="loadFoods('@item.CategoryID', '@item.CategoryName', 1)">@item.CategoryName</a></li>*@
+                    @*if (item.CategoryID == ViewBag.CategoryId){
+                        <li id="@item.CategoryID"><a href="@Url.Action("Menu", "Home", new { orderType=Session["orderType"], categoryId=item.CategoryID })" class="selected">@item.CategoryName</a></li>
+                    }
+                    else { 
+                        <li id="@item.CategoryID"><a href="@Url.Action("Menu", "Home", new { ordertype=Session["orderType"], categoryid = item.CategoryID })">@item.CategoryName</a></li>
+                    }*@
+                    if (item.CategoryID == ViewBag.CategoryId)
+                    {
+                        <li id="@item.CategoryID"><a href="@Url.Action("SelectedMenu", "Home", new { categoryId = item.CategoryID })" class="selected">@item.CategoryName</a></li>
+                    }
+                    else
+                    {
+                        <li id="@item.CategoryID"><a href="@Url.Action("SelectedMenu", "Home", new { categoryId = item.CategoryID })">@item.CategoryName</a></li>
+                    }
+
+                }
+            }
+}
+    </ul>
+@*</div>*@
